@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isApprovedMaster() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/masters/$(request.auth.uid))
+        && get(/databases/$(database)/documents/masters/$(request.auth.uid)).data.active == true;
+    }
+
+    match /masters/{uid} {
+      // A signed-in user can read only their own approval document.
+      allow get: if request.auth != null
+        && request.auth.uid == uid
+        && resource.data.active == true;
+      allow list, create, update, delete: if false;
+    }
+
+    match /students/{studentId} {
+      allow read, create, update, delete: if isApprovedMaster();
+    }
+
+    match /attendance/{attendanceId} {
+      allow read, create, update, delete: if isApprovedMaster();
+    }
+  }
+}
