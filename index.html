@@ -24,7 +24,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, query, orderBy, where, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
-const firebaseConfig={apiKey:'AIzaSyCL4zWLKb0do9NvaUF5b4jCjvj1WfPR4Ac',authDomain:'thekkanporeattendance-36c06.firebaseapp.com',projectId:'thekkanporeattendance-36c06',storageBucket:'thekkanporeattendance-36c06.firebasestorage.app',messagingSenderId:'426865087217',appId:'1:426865087217:web:e67e06f3870c5d6c2f4f50'};
+const firebaseConfig={apiKey:'AIzaSyCL4zWLKb0do9NvaUF5b4jCjvj1WfPR4Ac',authDomain:'thekkanporeattendance-36c06.firebaseapp.com',projectId:'thekkanporeattendance-36c06',storageBucket:'thekkanporeattendance-36c06.firebasestorage.app',messagingSenderId:'426865087217',appId:'1:426865087217:web:866c5100411a80812f4f50'};
 const appFirebase=initializeApp(firebaseConfig),auth=getAuth(appFirebase),db=getFirestore(appFirebase);
 const BELTS=['White','Yellow','Orange','Green','Blue','Red','Brown','Black'];let students=[], attendanceCache={}, currentUser=null, approved=false;
 const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
